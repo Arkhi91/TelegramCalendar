@@ -1,0 +1,43 @@
+﻿#устанавливает имя рабочего процесса, которое будет отображаться на странице Actions вашего репозитория на GitHub.
+name: .NET Core CI
+#Этот раздел определяет, когда рабочий процесс будет запущен. В этом случае он запускается каждый раз, когда вы делаете коммит в ветку main или когда создается pull request в ветку main.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+    # действие actions/checkout@v2, которое позволяет рабочему процессу получить доступ к содержимому вашего репозитория.
+    steps:
+    - uses: actions/checkout@v2
+    # устанавливает .NET Core с помощью действия actions/setup-dotnet@v1. Версия .NET Core, которую нужно установить, указывается в dotnet-version.
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.x
+    #восстанавливает все зависимости вашего проекта с помощью команды dotnet restore.
+    - name: Restore dependencies
+      run: dotnet restore
+    #обирает ваш проект с помощью команды dotnet build. Флаг --no-restore используется, потому что зависимости уже были восстановлены на предыдущем шаге.
+    - name: Build
+      run: dotnet build --no-restore --configuration Release
+    #запускает все тесты в вашем проекте с помощью команды dotnet test. Флаг --no-build используется, потому что проект уже был собран на предыдущем шаге. Флаг --verbosity normal используется для управления уровнем детализ
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --configuration Release
+    - name: send telegram message on push
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ${{ github.actor }} created commit:
+          Commit message: ${{ github.event.commits[0].message }}
+            
+          Repository: ${{ github.repository }}
+            
+          See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
