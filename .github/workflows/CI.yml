@@ -11,7 +11,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     # действие actions/checkout@v2, которое позволяет рабочему процессу получить доступ к содержимому вашего репозитория.
     steps:
     - uses: actions/checkout@v2
