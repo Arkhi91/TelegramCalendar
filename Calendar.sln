@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalendarApi", "Calendar\CalendarApi.csproj", "{310FA72D-9806-4C01-9563-584F804A73B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramWorker", "TelegramWorker\TelegramWorker.csproj", "{4474CEB5-B1C2-4FF8-829C-5CBD12A6892E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelegramWorker", "TelegramWorker\TelegramWorker.csproj", "{4474CEB5-B1C2-4FF8-829C-5CBD12A6892E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarApi.Tests", "CalendarApi.Tests\CalendarApi.Tests.csproj", "{1A1858F5-AAF7-4D17-BCD4-4CCBCB1AC992}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{4474CEB5-B1C2-4FF8-829C-5CBD12A6892E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4474CEB5-B1C2-4FF8-829C-5CBD12A6892E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4474CEB5-B1C2-4FF8-829C-5CBD12A6892E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1A1858F5-AAF7-4D17-BCD4-4CCBCB1AC992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1A1858F5-AAF7-4D17-BCD4-4CCBCB1AC992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1A1858F5-AAF7-4D17-BCD4-4CCBCB1AC992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1A1858F5-AAF7-4D17-BCD4-4CCBCB1AC992}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
