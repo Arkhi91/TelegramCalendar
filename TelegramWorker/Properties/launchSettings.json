@@ -16,15 +16,8 @@
       "launchUrl": "weatherforecast",
       "applicationUrl": "http://localhost:5127",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "TelegramBotToken": "6218699192:AAGOGW4W2p4nYvvtMaUOmWx8q737ni7GECM"
       }
     }
   }
