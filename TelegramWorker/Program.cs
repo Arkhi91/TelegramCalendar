@@ -9,13 +9,15 @@ namespace TelegramWorker
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
+            
             // Add services to the container.
             builder.Services.AddAuthorization();
-            builder.Services.AddHostedService<HostedService>();
-            builder.Services.AddSingleton(x => 
+            builder.Services.AddHostedService<TelegramBackgroundService>();
+            builder.Services.AddSingleton<ITelegramBotClient>(x => 
             {
-                return new TelegramBotClient("6218699192:AAGOGW4W2p4nYvvtMaUOmWx8q737ni7GECM");
+                var token = builder.Configuration["TelegramBotToken"];
+                return new TelegramBotClient(token);
+                
             });
 
             var app = builder.Build();

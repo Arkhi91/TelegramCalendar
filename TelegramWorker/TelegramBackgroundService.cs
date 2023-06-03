@@ -19,15 +19,17 @@ namespace TelegramWorker
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             _client.StartReceiving(Update, Error);
+            return Task.CompletedTask;
         }
         //перенести логику из телеги
 
-        private static Task Error(ITelegramBotClient botClient, Exception ex, CancellationToken token)
+        private Task Error(ITelegramBotClient botClient, Exception ex, CancellationToken token)
         {
-            _logger.LogError(ex);
+            _logger.LogError(ex, "Message");
+            return Task.CompletedTask;
         }
 
-        async static Task Update(ITelegramBotClient botClient, Update update, CancellationToken token)
+        async Task Update(ITelegramBotClient botClient, Update update, CancellationToken token)
         {
             var message = update.Message;
             if (message.Text != null)
@@ -80,6 +82,7 @@ namespace TelegramWorker
                     Console.WriteLine(ex.Message);
                 }
             }
+
         }
     }
 }
