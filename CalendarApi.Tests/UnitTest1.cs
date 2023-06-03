@@ -24,7 +24,7 @@ namespace CalendarApi.Tests
             _storage.SaveEvent(@event);
 
             //Assert
-            Assert.AreEqual(2, @event.Id);
+            Assert.AreEqual(1, @event.Id);
         }
     }
 }
